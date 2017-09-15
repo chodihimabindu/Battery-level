@@ -313,7 +313,9 @@ Searching  For  Devices........
 <div class="screen6">
 	<div class="container">
 		<h3>Device Information</h3>
-		<div class="deviceName"></div>
+		<div class="deviceName"></div><br>
+		<div class="deviceId"></div><br>
+		<div class="battery"></div><br>
   </div>
 </div>
 <!-- Latest compiled and minified JS -->
@@ -327,7 +329,8 @@ function onButtonClick() {
 	navigator.bluetooth.requestDevice(
 	{filters: [{services: ['battery_service']}]})
 	.then(device => {
-		$(".deviceName").text("Device Name:"+device.name+"<br>DeviceId:"+device.id);
+		$(".deviceName").text("Device Name:"+device.name);
+		$(".DeviceId").text("DeviceId:"+device.id);
 		console.log('Connecting to GATT Server...');
 		return device.gatt.connect();
 	})
@@ -345,7 +348,8 @@ function onButtonClick() {
 	})
 	.then(value => {
 		let batteryLevel = value.getUint8(0);
-		console.log('> Battery Level is ' + batteryLevel + '%');
+		$(".battery").text(' Battery Level is ' + batteryLevel + '%');
+		console.log(' Battery Level is ' + batteryLevel + '%');
 	})
 	.catch(error => {
 		console.log('Argh! ' + error);
