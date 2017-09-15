@@ -49,10 +49,16 @@
 		position: relative;
 		visibility: hidden;
 		opacity: 0;
-
-
-
 	}
+
+	.devices{
+		position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  -webkit-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+	}
+
 
 	.devices.active .list-group-item:nth-child(1){
 		transition-delay: 1s;
@@ -133,7 +139,6 @@
 		z-index: 999;
 		display: none;
 		color: #fff;
-		font-size:30px;
 		text-align: center;
 		padding:50px 20px;
 	}
@@ -221,49 +226,10 @@ Searching  For  Devices........
 </div>
 <div class="screen3">
 	<div class="container">
-	<h3>Found Devices</h3>
+<h3>Click below to get battery status of selected device</h3>
 		<div class="list-group devices">
-<a class="list-group-item">Lenovo</a>
-<a class="list-group-item">Moto G4</a>
-<a class="list-group-item">Mi Note2</a>
-<a class="list-group-item">Lenovo</a>
-<a class="list-group-item">Moto G4</a>
-<a class="list-group-item">Mi Note2</a>
-<a class="list-group-item">Lenovo</a>
-<a class="list-group-item">Moto G4</a>
-<a class="list-group-item">Mi Note2</a>
-
-
+<a class="list-group-item">Get battery status</a>
 		</div>
-	</div>
-</div>
-<div class="screen4">
-	<div class="container">
-
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="well">
-					<form  name="myForm">
-						<div class="form-group form-group-sm row">
-							<label class="control-label col-sm-4">Devicename</label>
-							<div class="col-sm-8"><input type="text" class="col-sm-2 form-control" required="" name="Devicename" placeholder="Devicename"></div>
-						</div>
-						<div class="form-group form-group-sm row">
-							<label class="control-label col-sm-4">Mac Address</label>
-							<div class="col-sm-8"><input type="text" class="col-sm-2 form-control" name="Macaddress" placeholder="Mac Address" required=""></div>
-						</div>
-						<div class="form-group form-group-sm row">
-							<label for="password" class="col-sm-4 control-label">Password</label>
-							<div class="col-sm-8"><input type="password" class="form-control" name="password" placeholder="Password" required=""></div>
-						</div>
-
-
-						<button type="button" class="btn btn-primary btn-lg btn-block connect">Connect</button>
-					</form>
-				</div>
-			</div>
-		</div>
-
 	</div>
 </div>
 <div class="screen5">
@@ -360,7 +326,7 @@ function onButtonClick() {
 
 	$(".detecting").on("click",function(){
     $(".screen2").fadeIn();
-    setTimeout(function(){$(".screen2").fadeOut();}, 3200);
+    setTimeout(function(){$(".screen2").fadeOut();}, 6000);
     setTimeout(function(){
     	$(".screen3").fadeIn();
     	$(".devices").addClass('active');
