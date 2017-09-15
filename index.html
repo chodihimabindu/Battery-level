@@ -313,6 +313,7 @@ Searching  For  Devices........
 <div class="screen6">
 	<div class="container">
 		<h3>Device Information</h3>
+		<div class="deviceInfo"></div>
   </div>
 </div>
 <!-- Latest compiled and minified JS -->
@@ -377,7 +378,7 @@ function onButtonClick() {
 				$(".screen6").fadeIn();
 				setTimeout(function(){
 					$(".screen5").fadeOut();
-
+					$(".deviceInfo").text("Devicename:"+device.name);
 				}, 2000);
 			}
 
