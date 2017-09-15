@@ -5,7 +5,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 </head>
-<body  onclick="locatio.href = 'homemain.html'">
+<body>
 <style type="text/css">
 	html,body{
 		height: 100%;
@@ -206,7 +206,7 @@
 <div class="screen1">
 	 <div class="container">
 	 	 <marquee direction="right"   style="color:RoyalBlue" ><h1>Bluetooth Services</h1></marquee>
-		<button type="button" class="btn btn-lg detecting" style="background: transparent; color: #F2F2F2;  border-radius: 4px; padding: 15px 32px; borde: 2px solid #e7e7e7; font-size: 26px; ">Detect Devices</button>
+		<button type="button" onclick="onButtonClick()" class="btn btn-lg detecting" style="background: transparent; color: #F2F2F2;  border-radius: 4px; padding: 15px 32px; borde: 2px solid #e7e7e7; font-size: 26px; ">Detect Devices</button>
 	 </div>
 </div>
 <div class="screen2">
@@ -309,20 +309,6 @@ Searching  For  Devices........
 
 
 		</div>
-		<script >
-		countdown();
-		setTimeout(increase, 2000);
-		</script>
-
-
-
-
-
-
-
-
-
-
 
 <div class="screen6">
 	<div class="container">
@@ -336,38 +322,37 @@ Searching  For  Devices........
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function onButtonClick() {
-	log('Requesting Bluetooth Device...');
+	console.log('Requesting Bluetooth Device...');
 	navigator.bluetooth.requestDevice(
 	{filters: [{services: ['battery_service']}]})
 	.then(device => {
-		log('Connecting to GATT Server...');
+		console.log('Connecting to GATT Server...');
 		return device.gatt.connect();
 	})
 	.then(server => {
-		log('Getting Battery Service...');
+		console.log('Getting Battery Service...');
 		return server.getPrimaryService('battery_service');
 	})
 	.then(service => {
-		log('Getting Battery Level Characteristic...');
+		console.log('Getting Battery Level Characteristic...');
 		return service.getCharacteristic('battery_level');
 	})
 	.then(characteristic => {
-		log('Reading Battery Level...');
+		console.log('Reading Battery Level...');
 		return characteristic.readValue();
 	})
 	.then(value => {
 		let batteryLevel = value.getUint8(0);
-		log('> Battery Level is ' + batteryLevel + '%');
+		console.log('> Battery Level is ' + batteryLevel + '%');
 	})
 	.catch(error => {
-		log('Argh! ' + error);
+		console.log('Argh! ' + error);
 	});
 }
 
 
 	$(".detecting").on("click",function(){
     $(".screen2").fadeIn();
-		onButtonClick
     setTimeout(function(){$(".screen2").fadeOut();}, 3200);
     setTimeout(function(){
     	$(".screen3").fadeIn();
@@ -399,54 +384,6 @@ function onButtonClick() {
 		},1000);
 
 	});
-	// set minutes
-	var mins = 47;
-
-	// calculate the seconds (don't change this! unless time progresses at a different speed for you...)
-	var secs = mins * 60;
-	function countdown() {
-		setTimeout('Decrement()',1000);
-	}
-	function Decrement() {
-		if (document.getElementById) {
-			minutes = document.getElementById("minutes");
-			seconds = document.getElementById("seconds");
-			// if less than a minute remaining
-			if (seconds < 59) {
-				seconds.value = secs;
-			} else {
-				minutes.value = getminutes();
-				seconds.value = getseconds();
-			}
-			secs--;
-			setTimeout('Decrement()',1000);
-		}
-	}
-	function getminutes() {
-		// minutes is seconds divided by 60, rounded down
-		mins = Math.floor(secs / 60);
-		return mins;
-	}
-	function getseconds() {
-		// take mins remaining (as seconds) away from total seconds remaining
-		return secs-Math.round(mins *60);
-	}
-
-	var value = 0;
-	function increase(){
-		value = value + 20;
-		if(value>=100) value = 100;
-		document.getElementById("progress").style.width = value + "%";
-		if(value>60)
-			document.getElementById("status").innerHTML="Paired.";
-			else if(value>40)
-				document.getElementById("status").innerHTML="Connected...";
-				else
-					document.getElementById("status").innerHTML="Connecting...";
-
-					setTimeout(increase, 2000);
-
-				}
 
 </script>
 
