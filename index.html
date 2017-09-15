@@ -206,7 +206,7 @@
 <div class="screen1">
 	 <div class="container">
 	 	 <marquee direction="right"   style="color:RoyalBlue" ><h1>Bluetooth Services</h1></marquee>
-		<button type="button" class="btn btn-lg detecting" style="background: transparent; color: #F2F2F2;  border-radius: 4px; padding: 15px 32px; borde: 2px solid #e7e7e7; font-size: 26px; ">Detect Devices</button>
+		<button type="button" class="btn btn-lg detecting" style="background: transparent; color: #F2F2F2;  border-radius: 4px; padding: 15px 32px; borde: 2px solid #e7e7e7; font-size: 26px; " onclick="onButtonClick">Detect Devices</button>
 	 </div>
 </div>
 <div class="screen2">
@@ -337,7 +337,7 @@ Searching  For  Devices........
 <script type="text/javascript">
 
 	$(".detecting").on("click",function(){
-		onButtonClick();
+		
     $(".screen2").fadeIn();
     setTimeout(function(){$(".screen2").fadeOut();}, 3200);
     setTimeout(function(){
