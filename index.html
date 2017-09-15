@@ -327,6 +327,7 @@ function onButtonClick() {
 	navigator.bluetooth.requestDevice(
 	{filters: [{services: ['battery_service']}]})
 	.then(device => {
+		$(".deviceName").text("Devicename:"+device.name+"<br>DeviceId:"+device.id);
 		console.log('Connecting to GATT Server...');
 		return device.gatt.connect();
 	})
@@ -378,7 +379,6 @@ function onButtonClick() {
 				$(".screen6").fadeIn();
 				setTimeout(function(){
 					$(".screen5").fadeOut();
-					$(".deviceInfo").text("Devicename:"+device.name);
 				}, 2000);
 			}
 
