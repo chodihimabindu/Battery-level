@@ -132,13 +132,11 @@
 		top: 0px;
 		z-index: 999;
 		display: none;
-		color:#9b9b9b;
+		color: #fff;
+		text-align: center;
 		padding:50px 20px;
 	}
-.screen6 h3{
-	color: #fff;
-	text-align: center;
-}
+
 .centerclass {
 	bottom: 12%;
 	position: absolute;
@@ -164,7 +162,7 @@
 	text-align: center;
 	color: white;
 	padding-top: 25px;
-	font-size:17px;
+	font-size:30px;
 	font-weight: bold;
 	display: inline-block;
 }
@@ -200,6 +198,8 @@
 	font-size:25px;
 
 }
+
+
 
 </style>
 
@@ -312,7 +312,7 @@ Searching  For  Devices........
 
 <div class="screen6">
 	<div class="container">
-		<h3>Device Information</h3>
+		<h2>Device Information</h2>
 		<div class="deviceName"></div><br>
 		<div class="deviceId"></div><br>
 		<div class="battery"></div><br>
@@ -330,7 +330,7 @@ function onButtonClick() {
 	{filters: [{services: ['battery_service']}]})
 	.then(device => {
 		$(".deviceName").text("Device Name:"+device.name);
-		$(".DeviceId").text("DeviceId:"+device.id);
+		$(".deviceId").text("DeviceId:"+device.id);
 		console.log('Connecting to GATT Server...');
 		return device.gatt.connect();
 	})
